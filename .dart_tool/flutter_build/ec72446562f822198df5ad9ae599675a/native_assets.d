@@ -1,0 +1,1 @@
+ /Users/tiagoferreira/Documents/GitHub/kalshi-take-home-assignment/.dart_tool/flutter_build/ec72446562f822198df5ad9ae599675a/native_assets.yaml: 
