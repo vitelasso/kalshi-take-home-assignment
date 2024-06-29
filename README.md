@@ -34,7 +34,7 @@ The repo contains in total 2 widget pages that listen and consume BLoC states an
 General widgets folder where we should place all extracted widgets that could be reused across the app
 
 ## Testing
-The testing part was taking into account for this app aswell, being accomplished a total of **85.9%** 
+The testing part was taking into account for this app aswell, being accomplished a total of **87.7%** 
 code coverage (check in file coverage/html/index.html), which seems to me reasonable and a stable metric to push 
 the code.
 
