@@ -13,7 +13,8 @@ class FinantialTestCardWidget extends StatefulWidget {
   const FinantialTestCardWidget({Key? key}) : super(key: key);
 
   @override
-  State<FinantialTestCardWidget> createState() => _FinantialTestCardWidgetState();
+  State<FinantialTestCardWidget> createState() =>
+      _FinantialTestCardWidgetState();
 }
 
 class _FinantialTestCardWidgetState extends State<FinantialTestCardWidget> {
@@ -36,23 +37,23 @@ class _FinantialTestCardWidgetState extends State<FinantialTestCardWidget> {
     });
     finantialHealthBloc = BlocProvider.of<FinantialHealthBloc>(context);
     _subscription = finantialHealthBloc.stream.listen((state) {
-          if (state is FinantialHealthFinished) {
-            // Navigate to the new screen when FinantialHealthFinished is emitted
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (context) => const FinantialResultPage()),
-            );
-          }
-        });
+      if (state is FinantialHealthFinished) {
+        // Navigate to the new screen when FinantialHealthFinished is emitted
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const FinantialResultPage()),
+        );
+      }
+    });
   }
 
   @override
   void dispose() {
-     annualIncomeController.removeListener(() {
+    annualIncomeController.removeListener(() {
       _formatInput(annualIncomeController);
       _updateButtonState();
     });
-     monthlyCostsController.removeListener(() {
+    monthlyCostsController.removeListener(() {
       _formatInput(monthlyCostsController);
       _updateButtonState();
     });
@@ -65,27 +66,34 @@ class _FinantialTestCardWidgetState extends State<FinantialTestCardWidget> {
   void _formatInput(TextEditingController controller) {
     String initialText = controller.text;
     initialText = initialText.replaceAll(',', '');
-    if (initialText.isNotEmpty && int.tryParse(initialText) != null){
-      final formattedNumber = NumberFormat("#,##0").format(int.parse(initialText));
+    if (initialText.isNotEmpty && int.tryParse(initialText) != null) {
+      final formattedNumber =
+          NumberFormat("#,##0").format(int.parse(initialText));
       if (formattedNumber != controller.text) {
-      controller.text = formattedNumber;
-      controller.selection = TextSelection.fromPosition(TextPosition(offset: controller.text.length));
+        controller.text = formattedNumber;
+        controller.selection = TextSelection.fromPosition(
+            TextPosition(offset: controller.text.length));
       }
     }
   }
 
   _updateButtonState() {
-    final annualIncome = int.tryParse(annualIncomeController.text.replaceAll(',', ''));
-    final monthlyCosts = int.tryParse(monthlyCostsController.text.replaceAll(',', ''));
-    buttonEnabled.value = annualIncome != null && annualIncome > 0 && monthlyCosts != null && monthlyCosts > 0;
+    final annualIncome =
+        int.tryParse(annualIncomeController.text.replaceAll(',', ''));
+    final monthlyCosts =
+        int.tryParse(monthlyCostsController.text.replaceAll(',', ''));
+    buttonEnabled.value = annualIncome != null &&
+        annualIncome > 0 &&
+        monthlyCosts != null &&
+        monthlyCosts > 0;
   }
 
   @override
   Widget build(BuildContext context) => Card(
-        color:  Colors.white,
+        color: Colors.white,
         shape: RoundedRectangleBorder(
-    borderRadius: BorderRadius.circular(8.0),
-  ),
+          borderRadius: BorderRadius.circular(8.0),
+        ),
         semanticContainer: true,
         clipBehavior: Clip.antiAliasWithSaveLayer,
         elevation: 8,
@@ -97,76 +105,113 @@ class _FinantialTestCardWidgetState extends State<FinantialTestCardWidget> {
               SvgPicture.asset("assets/icon.svg"),
               const SizedBox(height: 24),
               Text(
-                  Constants.strFinantialWellnessTest,
-                  key: const Key('finantial_test_card_title'),
-                  textAlign: TextAlign.center,
-                style: TextStyle(color: Theme.of(context).primaryColor, fontSize: 20, fontWeight: FontWeight.bold),
+                Constants.strFinantialWellnessTest,
+                key: const Key('finantial_test_card_title'),
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    color: Theme.of(context).primaryColor,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold),
               ),
               Text(
-                  Constants.strEnterInformation,
-                style: TextStyle(color: Theme.of(context).primaryColor, fontSize: 14, fontWeight: FontWeight.normal),
+                Constants.strEnterInformation,
+                style: TextStyle(
+                    color: Theme.of(context).primaryColor,
+                    fontSize: 14,
+                    fontWeight: FontWeight.normal),
               ),
               const SizedBox(height: 24),
-              _buildTextField(context,key: 'annualIncomeController',labelText: Constants.strAnnualIncome, controller: annualIncomeController),
+              _buildTextField(context,
+                  key: 'annualIncomeController',
+                  labelText: Constants.strAnnualIncome,
+                  controller: annualIncomeController),
               const SizedBox(height: 24),
-              _buildTextField(context,key: 'monthlyCostsController',labelText:  Constants.strMonthlyCosts, controller: monthlyCostsController),
+              _buildTextField(context,
+                  key: 'monthlyCostsController',
+                  labelText: Constants.strMonthlyCosts,
+                  controller: monthlyCostsController),
               const SizedBox(height: 24),
-               ValueListenableBuilder<bool>(
-          valueListenable: buttonEnabled,
-          builder: (context, enabled, child) { 
-            return SizedBox(
-              width: double.infinity,
-              height: 56,
-              child: ElevatedButton(
-                onPressed:  enabled ? _onContinueButtonPressed : null, 
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Theme.of(context).highlightColor, // background color
-                ),
-                child: const Text(
-                      Constants.strCommonContinue,
-                    style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.w500),
-                  ),),
-            );
-          } 
-              ),
+              ValueListenableBuilder<bool>(
+                  valueListenable: buttonEnabled,
+                  builder: (context, enabled, child) {
+                    return SizedBox(
+                      width: double.infinity,
+                      height: 56,
+                      child: ElevatedButton(
+                        onPressed: enabled ? _onContinueButtonPressed : null,
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Theme.of(context)
+                              .highlightColor, // background color
+                        ),
+                        child: const Text(
+                          Constants.strCommonContinue,
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                              fontWeight: FontWeight.w500),
+                        ),
+                      ),
+                    );
+                  }),
             ],
-            ),
+          ),
         ),
       );
 
-      void _onContinueButtonPressed() async => finantialHealthBloc.add(CalculateFinantialHealthScore(annualIncome: int.parse(annualIncomeController.text.replaceAll(',', '')), monthlyCosts: int.parse(monthlyCostsController.text.replaceAll(',', ''))));
+  void _onContinueButtonPressed() async =>
+      finantialHealthBloc.add(CalculateFinantialHealthScore(
+          annualIncome:
+              int.parse(annualIncomeController.text.replaceAll(',', '')),
+          monthlyCosts:
+              int.parse(monthlyCostsController.text.replaceAll(',', ''))));
 
-      Widget _buildTextField(BuildContext context,{required String key, required String labelText, required TextEditingController controller}) => Column(
-          children: [
-             Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                    labelText,
-                  style: TextStyle(color: Theme.of(context).primaryColor, fontSize: 12, fontWeight: FontWeight.w400),
-                ),
-              ),
-              const SizedBox(height: 8),
-              Container(
-                decoration: BoxDecoration(
-                  border: Border.all(color: const Color(0xFFE9EEF2), width: 1),
-                  borderRadius: const BorderRadius.all(Radius.circular(4.0)), 
-                ),
-                child: TextField(
-                  key: Key('${key}_input'),
-                  controller: controller,
-                  keyboardType: TextInputType.number,
-                  inputFormatters: <TextInputFormatter>[
-        FilteringTextInputFormatter.digitsOnly
-      ],
-                  style: const TextStyle(fontFamily: 'Rubik', fontSize: 24, fontWeight: FontWeight.w500, color: Color(0xFF4D6475)),
-                  decoration: const InputDecoration(
-                    prefixText: '\$ ',
-                    prefixStyle: TextStyle(fontFamily: 'Rubik', fontSize: 24, fontWeight: FontWeight.w500, color: Color(0xFFCBD5DC)),
-                    border: InputBorder.none,
-                    contentPadding: EdgeInsets.all(12.0) // Remove the default underline
-                  ),
-                ),
-              ),
+  Widget _buildTextField(BuildContext context,
+          {required String key,
+          required String labelText,
+          required TextEditingController controller}) =>
+      Column(
+        children: [
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              labelText,
+              style: TextStyle(
+                  color: Theme.of(context).primaryColor,
+                  fontSize: 12,
+                  fontWeight: FontWeight.w400),
+            ),
+          ),
+          const SizedBox(height: 8),
+          Container(
+            decoration: BoxDecoration(
+              border: Border.all(color: const Color(0xFFE9EEF2), width: 1),
+              borderRadius: const BorderRadius.all(Radius.circular(4.0)),
+            ),
+            child: TextField(
+              key: Key('${key}_input'),
+              controller: controller,
+              keyboardType: TextInputType.number,
+              inputFormatters: <TextInputFormatter>[
+                FilteringTextInputFormatter.digitsOnly
               ],
-        );
+              style: const TextStyle(
+                  fontFamily: 'Rubik',
+                  fontSize: 24,
+                  fontWeight: FontWeight.w500,
+                  color: Color(0xFF4D6475)),
+              decoration: const InputDecoration(
+                  prefixText: '\$ ',
+                  prefixStyle: TextStyle(
+                      fontFamily: 'Rubik',
+                      fontSize: 24,
+                      fontWeight: FontWeight.w500,
+                      color: Color(0xFFCBD5DC)),
+                  border: InputBorder.none,
+                  contentPadding:
+                      EdgeInsets.all(12.0) // Remove the default underline
+                  ),
+            ),
+          ),
+        ],
+      );
 }

@@ -5,7 +5,8 @@ import 'package:kalshi_tha/models/user_finantial_status_model.dart';
 part 'finantial_health_event.dart';
 part 'finantial_health_state.dart';
 
-class FinantialHealthBloc extends Bloc<FinantialHealthEvent, FinantialHealthState> {
+class FinantialHealthBloc
+    extends Bloc<FinantialHealthEvent, FinantialHealthState> {
   FinantialHealthBloc() : super(FinantialHealthInitial()) {
     on<FinantialHealthStart>((event, emit) => emit(FinantialHealthTest()));
 
@@ -17,7 +18,8 @@ class FinantialHealthBloc extends Bloc<FinantialHealthEvent, FinantialHealthStat
 
       if (annualCosts <= 0.25 * netIncome) {
         score = 'HEALTHY';
-      } else if (annualCosts > 0.25 * netIncome && annualCosts <= 0.75 * netIncome) {
+      } else if (annualCosts > 0.25 * netIncome &&
+          annualCosts <= 0.75 * netIncome) {
         score = 'MEDIUM';
       } else {
         score = 'LOW';

@@ -41,6 +41,8 @@ the code.
 The BLoC was tested using the **bloc_test** library and several dependencies were mocked in other to proceed with the
  tests.
 
+ Dart format and Flutter analyze commands were run, with no issues found! 
+
 
  ## Improvements
  The followig improvements could be done in order to increase the scalability of the app like:

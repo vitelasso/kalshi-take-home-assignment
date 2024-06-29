@@ -21,7 +21,7 @@ class App extends StatelessWidget {
         title: Constants.strAppTitle,
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          scaffoldBackgroundColor: Colors.white,
+            scaffoldBackgroundColor: Colors.white,
             colorScheme: const ColorScheme.light(
               primary: Color(0xFF1E2A32),
               secondary: Color(0xFF4D6475),

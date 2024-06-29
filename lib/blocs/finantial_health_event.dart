@@ -10,5 +10,6 @@ class CalculateFinantialHealthScore extends FinantialHealthEvent {
   final int annualIncome;
   final int monthlyCosts;
 
-  CalculateFinantialHealthScore({required this.annualIncome, required this.monthlyCosts});
+  CalculateFinantialHealthScore(
+      {required this.annualIncome, required this.monthlyCosts});
 }

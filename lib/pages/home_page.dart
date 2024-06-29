@@ -13,37 +13,45 @@ class HomePage extends StatelessWidget {
       top: false,
       child: Scaffold(
         appBar: const PreferredSize(
-          preferredSize: Size.fromHeight(80.0), // Set this height
-          child: AppBarWidget()
-        ),
-        body:  SingleChildScrollView(
-  child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                const SizedBox(height: 24),
-                Text(Constants.strFinantialWellnessCalculation,
-                    key: const Key('home_page_app_title'),
+            preferredSize: Size.fromHeight(80.0), // Set this height
+            child: AppBarWidget()),
+        body: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const SizedBox(height: 24),
+              Text(
+                Constants.strFinantialWellnessCalculation,
+                key: const Key('home_page_app_title'),
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    color: Theme.of(context).highlightColor,
+                    fontSize: 20,
+                    fontWeight: FontWeight.w400),
+              ),
+              const SizedBox(height: 24),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 8.0),
+                child: FinantialTestCardWidget(),
+              ),
+              const SizedBox(height: 24),
+              Column(
+                children: [
+                  SvgPicture.asset("assets/lock_icon.svg"),
+                  const SizedBox(height: 12),
+                  const Text(
+                    Constants.strFinancialEncryptedInfo,
                     textAlign: TextAlign.center,
-                    style: TextStyle(color: Theme.of(context).highlightColor, fontSize: 20, fontWeight: FontWeight.w400),),
-                const SizedBox(height: 24),
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 8.0),
-                  child: FinantialTestCardWidget(),
-                ),
-                const SizedBox(height: 24), 
-                Column(
-                  children: [
-                    SvgPicture.asset("assets/lock_icon.svg"),
-                    const SizedBox(height: 12),
-                    const Text(Constants.strFinancialEncryptedInfo,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(color: Color(0xFF708797), fontSize: 12, fontWeight: FontWeight.w400),),               
-                  ],
+                    style: TextStyle(
+                        color: Color(0xFF708797),
+                        fontSize: 12,
+                        fontWeight: FontWeight.w400),
+                  ),
+                ],
               ),
             ],
-        ),
-        
+          ),
         ),
       ),
     );

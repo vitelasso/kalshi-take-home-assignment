@@ -17,9 +17,8 @@ class FinantialResultPage extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Colors.grey[200],
         appBar: const PreferredSize(
-          preferredSize: Size.fromHeight(80.0), // Set this height
-          child: AppBarWidget()
-        ),
+            preferredSize: Size.fromHeight(80.0), // Set this height
+            child: AppBarWidget()),
         body: BlocConsumer<FinantialHealthBloc, FinantialHealthState>(
           builder: (context, state) {
             if (state is FinantialHealthFinished) {
@@ -28,25 +27,35 @@ class FinantialResultPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   const SizedBox(height: 25),
-                   Align(
+                  Align(
                     alignment: Alignment.center,
-                     child: Text(Constants.strFinantialWellnessScore,
-                                       key: const Key('home_page_app_title'),
-                                       textAlign: TextAlign.center,
-                                       style: TextStyle(color: Theme.of(context).highlightColor, fontSize: 18, fontWeight: FontWeight.w400),),
-                   ),
+                    child: Text(
+                      Constants.strFinantialWellnessScore,
+                      key: const Key('home_page_app_title'),
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: Theme.of(context).highlightColor,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w400),
+                    ),
+                  ),
                   const SizedBox(height: 32),
                   FinantialScoreCardWidget(userFinantialStatus: state.result),
-                  const SizedBox(height: 24), 
-                Column(
-                  children: [
-                    SvgPicture.asset("assets/lock_icon.svg"),
-                    const SizedBox(height: 12),
-                    const Text(Constants.strFinancialEncryptedInfo,
+                  const SizedBox(height: 24),
+                  Column(
+                    children: [
+                      SvgPicture.asset("assets/lock_icon.svg"),
+                      const SizedBox(height: 12),
+                      const Text(
+                        Constants.strFinancialEncryptedInfo,
                         textAlign: TextAlign.center,
-                        style: TextStyle(color: Color(0xFF708797), fontSize: 12, fontWeight: FontWeight.w400),),               
-                  ],
-              ),
+                        style: TextStyle(
+                            color: Color(0xFF708797),
+                            fontSize: 12,
+                            fontWeight: FontWeight.w400),
+                      ),
+                    ],
+                  ),
                 ],
               );
             }
@@ -55,9 +64,9 @@ class FinantialResultPage extends StatelessWidget {
           listener: (context, state) {
             if (state is FinantialHealthTest) {
               Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (context) => const HomePage()),
-            );
+                context,
+                MaterialPageRoute(builder: (context) => const HomePage()),
+              );
             }
           },
         ),

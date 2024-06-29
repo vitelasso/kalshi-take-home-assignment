@@ -6,10 +6,10 @@ class AppBarWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Padding(
-            padding: const EdgeInsets.only(top: 8.0),
-            child: AppBar(
-              title: SvgPicture.asset("assets/logo.svg"),
-              centerTitle: true,
-            ),
-          );
+        padding: const EdgeInsets.only(top: 8.0),
+        child: AppBar(
+          title: SvgPicture.asset("assets/logo.svg"),
+          centerTitle: true,
+        ),
+      );
 }
