@@ -43,6 +43,9 @@ The BLoC was tested using the **bloc_test** library and several dependencies wer
 
  Dart format and Flutter analyze commands were run, with no issues found! 
 
+## Running the App
+If using VSCode a launch.json file was created in order to quickly run the main.dart, other approach would need to call the $ flutter run command
+
 
  ## Improvements
  The followig improvements could be done in order to increase the scalability of the app like:
