@@ -142,12 +142,14 @@ class _FinantialTestCardWidgetState extends State<FinantialTestCardWidget> {
                 alignment: Alignment.centerLeft,
                 child: Text(
                     labelText,
-                  style: TextStyle(color: Theme.of(context).primaryColor, fontSize: 12, fontWeight: FontWeight.bold),
+                  style: TextStyle(color: Theme.of(context).primaryColor, fontSize: 12, fontWeight: FontWeight.w400),
                 ),
               ),
+              const SizedBox(height: 8),
               Container(
                 decoration: BoxDecoration(
-                  border: Border.all(color: Colors.black, width: 1),
+                  border: Border.all(color: const Color(0xFFE9EEF2), width: 1),
+                  borderRadius: const BorderRadius.all(Radius.circular(4.0)), 
                 ),
                 child: TextField(
                   key: Key('${key}_input'),

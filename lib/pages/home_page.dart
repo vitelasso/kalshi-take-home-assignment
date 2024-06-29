@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:kalshi_tha/constants/constants.dart';
 import 'package:kalshi_tha/widgets/app_bar_widget.dart';
 import 'package:kalshi_tha/widgets/finantial_test_card_widget.dart';
@@ -30,11 +31,21 @@ class HomePage extends StatelessWidget {
                   padding: EdgeInsets.symmetric(horizontal: 8.0),
                   child: FinantialTestCardWidget(),
                 ),
-              ],
-            ),
+                const SizedBox(height: 24), 
+                Column(
+                  children: [
+                    SvgPicture.asset("assets/lock_icon.svg"),
+                    const SizedBox(height: 12),
+                    const Text(Constants.strFinancialEncryptedInfo,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(color: Color(0xFF708797), fontSize: 12, fontWeight: FontWeight.w400),),               
+                  ],
+              ),
+            ],
         ),
+        
         ),
-      
+      ),
     );
   }
 }

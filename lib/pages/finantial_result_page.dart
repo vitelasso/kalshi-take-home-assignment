@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:kalshi_tha/blocs/finantial_health_bloc.dart';
 import 'package:kalshi_tha/constants/constants.dart';
 import 'package:kalshi_tha/pages/home_page.dart';
@@ -34,8 +35,18 @@ class FinantialResultPage extends StatelessWidget {
                                        textAlign: TextAlign.center,
                                        style: TextStyle(color: Theme.of(context).highlightColor, fontSize: 18, fontWeight: FontWeight.w400),),
                    ),
-              const SizedBox(height: 32),
+                  const SizedBox(height: 32),
                   FinantialScoreCardWidget(userFinantialStatus: state.result),
+                  const SizedBox(height: 24), 
+                Column(
+                  children: [
+                    SvgPicture.asset("assets/lock_icon.svg"),
+                    const SizedBox(height: 12),
+                    const Text(Constants.strFinancialEncryptedInfo,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(color: Color(0xFF708797), fontSize: 12, fontWeight: FontWeight.w400),),               
+                  ],
+              ),
                 ],
               );
             }
